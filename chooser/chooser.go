@@ -133,13 +133,13 @@ func (rc *RecordChooser) drawList() {
 			end = 0
 		}
 	} else {
-		start = rc.currentSelected - middleLine
+		start = rc.currentSelected - middleLine - 1
 		end = rc.currentSelected + middleLine
 	}
 
 	display := rc.records[start:end]
 	length := len(fmt.Sprintf("%d", len(rc.records)+1)) + 1
-	for i := 0; i < height; i++ {
+	for i := 0; i < len(display); i++ {
 		number := fmt.Sprintf("%"+strconv.Itoa(length)+"d ", i+start+1)
 		color := termbox.ColorDefault
 		if i+start == rc.currentSelected {
